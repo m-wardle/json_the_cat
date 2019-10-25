@@ -1,4 +1,4 @@
-const fetchBreedDescription = require('../breedFetcher');
+const { fetchBreedDescription } = require('../breedFetcher');
 const { assert } = require('chai');
 
 describe('fetchBreedDescription', () => {
@@ -15,18 +15,18 @@ describe('fetchBreedDescription', () => {
     });
   });
 
-  // it('returns the error details when an invalid/non-existent breed is passed in.', (done) => {
-  //   fetchBreedDescription('fsdfsdfs', (err, desc) => {
-  //     // we expect an error, so body is not returned
+  it('returns the error details when an invalid/non-existent breed is passed in.', (done) => {
+    fetchBreedDescription('fsdfsdfs', (err, desc) => {
+      // we expect an error, so body is not returned
 
-  //     assert.equal(null, err);
+      assert.equal(null, desc);
 
-  //     const expectedDesc = "Breed not found, please try again!";
+      const expectedDesc = "Error: Breed not found. Please try again.";
 
-  //     assert.equal(expectedDesc, err)
+      assert.equal(expectedDesc, err);
 
-  //     done();
-  //   });
-  // });
+      done();
+    });
+  });
   
 });
